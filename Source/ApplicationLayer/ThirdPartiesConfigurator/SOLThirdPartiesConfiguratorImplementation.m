@@ -11,6 +11,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 
 static NSString * const kRCFCoreDataStoreName = @"OutputFaceBookData";
+static NSString * const kSOLThirdPartiesConfiguratorImplementationVKGuid = @"5399134";
 
 @interface SOLThirdPartiesConfiguratorImplementation () <VKSdkUIDelegate, VKSdkDelegate>
 @property (strong, nonatomic) UIViewController *rootController;
@@ -51,16 +52,22 @@ static NSString * const kRCFCoreDataStoreName = @"OutputFaceBookData";
 
 - (void)p_setupVkSdk {
     
-    VKSdk *sdkInstance = [VKSdk initializeWithAppId:@"5399134"];
+    VKSdk *sdkInstance = [VKSdk initializeWithAppId:kSOLThirdPartiesConfiguratorImplementationVKGuid];
     [sdkInstance setUiDelegate:self];
     [sdkInstance registerDelegate:self];
     
     NSArray *SCOPE = @[VK_PER_FRIENDS, VK_PER_WALL, VK_PER_AUDIO, VK_PER_PHOTOS, VK_PER_NOHTTPS, VK_PER_EMAIL, VK_PER_MESSAGES];
+    
+    typeof(self) __weak weakSelf = self;
     [VKSdk wakeUpSession:SCOPE completeBlock:^(VKAuthorizationState state, NSError *error) {
         
+        typeof(self) __strong strongSelf = weakSelf;
         if (state == VKAuthorizationAuthorized) {
             // Authorized and ready to go
-            [self.rootController dismissViewControllerAnimated:NO completion:^{}];
+    
+            [strongSelf.rootController dismissViewControllerAnimated:NO completion:^{
+            
+            }];
         } else if (error) {
             
 //            [UIAlertController alertControllerWithTitle:nil message:[error description] preferredStyle: UIAlertControllerStyleAlert];
@@ -75,6 +82,9 @@ static NSString * const kRCFCoreDataStoreName = @"OutputFaceBookData";
  */
 - (void)vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result {
     
+    [self.rootController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 /**
@@ -127,7 +137,6 @@ static NSString * const kRCFCoreDataStoreName = @"OutputFaceBookData";
  */
 - (void)vkSdkWillDismissViewController:(UIViewController *)controller {
     
-//    [self.rootViewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 /**
