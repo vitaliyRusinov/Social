@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="2rU-eX-Icc">
+            <objects>
+                <tableViewController restorationIdentifier="SOLFriendListTableViewController" storyboardIdentifier="SOLFriendListTableViewController" id="qLx-Nv-Cde" customClass="SOLFriendListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sze-nB-v78">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="x4O-nN-9kF">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x4O-nN-9kF" id="YDP-Ni-Y7R">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qLx-Nv-Cde" id="DxP-xd-7m1"/>
+                            <outlet property="delegate" destination="qLx-Nv-Cde" id="ZYM-lq-D6a"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oJs-cV-NLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="JHN-rb-B8Z" customClass="SOLFriendListModuleAssembly">
+                    <connections>
+                        <outlet property="viewController" destination="qLx-Nv-Cde" id="XVl-Wk-A5v"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="597" y="456"/>
+        </scene>
+    </scenes>
+</document>
